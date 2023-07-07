@@ -1,0 +1,110 @@
+<Gerenciador>:
+    TelaInicial:
+        name: "inicial"
+    TelaProdutos:
+        name: "produtos"
+    TelaCarrinho:
+        name: "carrinho"
+    TelaPagamento:
+        name: "pagamento"
+    TelaLoginScreen:
+        name: "login"
+    TelaRegisterScreen:
+        name: "register"
+
+<Princ_Button@Button>:
+    markup: True
+    background_color: 0, 0, 1, 1
+    font_size: "20sp"
+    size_hint: 0.5, 0.2
+    pos_hint: {"center_x": 0.5}
+
+<TelaInicial>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 18
+        canvas:
+            Color:
+                rgba: 0.2, 0.5, 0.5, 4
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        MDLabel:
+            text: "[b][color=#000033]BEM-VINDO A LOJA[/b][/color]"
+            markup: True
+            font_size: 22
+            halign: "center"
+            size_hint: 1, 0.1
+
+        Image:
+            source: "loja.png"
+            size_hint: 1, 0.5
+
+        MDLabel:
+            text: "[b][color=#000033]Seu espaço de compras \n na tranquilidade de seu lar[/b][/color]"
+            markup: True
+            font_size: 22
+            halign: "center"
+            size_hint: 1, 0.2
+
+        Button:
+            text: "[b][color=#FFFFFF]PODE ENTRAR QUE \n    A CASA É SUA[/color][/b]"
+            markup: True
+            background_color: 0.2, 0.6, 0.1, 1
+            font_size: 20
+            size_hint: 1, 0.2
+
+        GridLayout:
+            cols: 2
+            spacing: 1
+            canvas:
+                Color:
+                    rgba: 0.2, 0.5, 0.5, 4
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "[b]LOGIN[/b]"
+                    markup: "True"
+                    font_size: "20sp"
+                TextInput:
+                    id: username_input
+                    hint_text: "Digite o nome de usuário"
+
+                TextInput:
+                    id: password_input
+                    hint_text: 'Digite a senha'
+                    password: True
+                Button:
+                    text: '[b]ENTRAR[/b]'
+                    markup: "True"
+                    font_size: "20sp"
+                    on_release: app.root.current = "produtos"
+                    on_release:
+                        app.handle_login(username_input.text, password_input.text)
+
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "[b]CADASTRAR \n   USUÁRIO[/b]"
+                    markup: "True"
+                    font_size: "20sp"
+                TextInput:
+                    id: username_input
+                    hint_text: 'Digite o nome de usuário'
+                TextInput:
+                    id: password_input
+                    hint_text: 'Digite a senha'
+                    password: True
+                Button:
+                    text: "[b]CADASTRAR[/b]"
+                    markup: "True"
+                    font_size: "20sp"
+                    on_release:
+                        app.handle_registration(username_input.text, password_input.text)
+
+
